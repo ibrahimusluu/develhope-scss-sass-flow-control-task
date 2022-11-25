@@ -1,0 +1,73 @@
+/* QUESTION from PLATFORM:
+Add a new section to the layout as the picture displays. The boxes are squares of 45px per side (to be converted into rem) and their alignment is performed with flex rules. 
+The background color, the color,
+and the font-size can be handled using the flow control (@for, @if, etc...) and the darken and lighten methods (the numbers have a multiplier equal to 5) In particular,
+you need to create the classes .fs-1rem,
+.fs-2rem e .fs-3rem using @each The added colors are black and white only
+*/
+
+/*
+Suggerimento @for $var from 1 to 20 {
+    ... @if $var ==10 {
+        ...
+    }
+}
+*/
+
+@use "sass:color";
+@use "sass:list";
+
+$scss-font-size: 24px; 
+$scss-red: color.adjust(red);
+$scss-blue: color.adjust(blue);
+$scss-green: color.adjust(green);
+// $scss-font-size: list.append(24px); // here didn't work
+
+@mixin article($color, $border-color, $font-size: 1rem) {
+    border: 1px solid $border-color;
+    padding: 20px;
+    div {
+        &:first-child {
+            text-align: center;
+            h1 {
+                margin: 0;
+                color: $color;
+                text-decoration: underline;
+                text-decoration-color: $scss-blue;
+            }
+            h2 {
+                @extend h1;
+                margin: 2rem;
+                span {
+                    padding: 1rem;
+                    border: 1px solid $scss-red;
+                }
+            }
+        }
+        &.paragraphs {
+            display: flex;
+            text-align: center;
+            p {
+                border: 1px solid $color;
+                padding: 35px;
+                &:nth-child(odd) {
+                    color: $scss-blue;
+                }
+                &:nth-child(even) {
+                    color: $border-color;
+                }
+            }
+        }
+        &:last-child {
+            border: 1px solid $scss-blue;
+            font-size: $font-size;
+            color: $color;
+            text-align: center;
+            padding: 20px;
+        }
+    }
+}
+
+body {
+    @include article($scss-green, $scss-red, $scss-font-size);
+}
