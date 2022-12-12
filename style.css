@@ -12,12 +12,13 @@ Suggerimento @for $var from 1 to 20 {
     }
 }
 */
-body {
-  border: 1px solid red;
-  padding: 20px;
+.debug {
+  border: 0.0625rem solid red;
 }
-body div:first-child {
-  text-align: center;
+
+body {
+  border: 0.0625rem solid red;
+  padding: 1.25rem;
 }
 body div:first-child h1, body div:first-child h2 {
   margin: 0;
@@ -30,15 +31,15 @@ body div:first-child h2 {
 }
 body div:first-child h2 span {
   padding: 1rem;
-  border: 1px solid red;
+  border: 0.0625rem solid red;
 }
 body div.paragraphs {
   display: flex;
   text-align: center;
 }
 body div.paragraphs p {
-  border: 1px solid green;
-  padding: 35px;
+  border: 0.0625rem solid green;
+  padding: 2.1875rem;
 }
 body div.paragraphs p:nth-child(odd) {
   color: blue;
@@ -46,12 +47,26 @@ body div.paragraphs p:nth-child(odd) {
 body div.paragraphs p:nth-child(even) {
   color: red;
 }
-body div:last-child {
-  border: 1px solid blue;
-  font-size: 24px;
+body div.footer {
+  border: 0.0625rem solid blue;
+  font-size: 1.5rem;
   color: green;
   text-align: center;
-  padding: 20px;
+  padding: 1.25rem;
+}
+body .title {
+  text-align: center;
+}
+body .numbers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+body .numbers div {
+  border: 0.0625rem solid red;
+  width: 2.8125rem;
+  height: 2.8125rem;
 }
 
 /*# sourceMappingURL=style.css.map */
