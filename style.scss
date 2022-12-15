@@ -80,13 +80,46 @@ $scss-green: color.adjust(green);
         align-items: center;
         margin-bottom: 1rem;
         div {
-            border: m.toRem(1) solid color.adjust(red);
-            width: m.toRem(45);
-            height: m.toRem(45);
+            @for $i from 1 to 20 {
+                &:nth-child(#{$i}) {
+                    background-color: darken($color: white, $amount: $i * 5%); // $i * 5% --> "Error: Positional arguments must come before keyword arguments."
+                    color: lighten($color: black, $amount: $i * 5%);
+                    border: m.toRem(1) solid color.adjust(red);
+                    width: m.toRem(45);
+                    height: m.toRem(45);
+                }
+
+                @if $i == 10 {
+                    &:nth-child(#{$i}) {
+                        color: red;
+                        background-color: blue;
+                    }
+                }
+            }
+            
         }
     }
 }
 
+$nums: 1, 2, 3; // , 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
+
+@each $i in $nums {
+    .fs-#{$i}rem {
+        font-size: m.toRem(16 * $i);
+    }
+}
+
+// @for $i from 1 through 3 {
+//     .numbers:nth-child(3n + #{$i}) {
+//             background-color: lighten($base-color, $i * 5%);
+//     }
+// }
+
 body {
     @include article($scss-green, $scss-red, $scss-font-size);
 }
+
+/*
+"You are missing the classes you need to generate using a for loop, for the styling of the numbers. 
+And you'rem issing the .fs-1rem fs-2rem and .fs-3rem classes too, that can be created using the @each in SCSS"
+*/
